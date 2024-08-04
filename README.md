@@ -13,50 +13,52 @@ _Secure your supply chain, understand dependencies in your environment, know abo
 
 </header>
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+## Step 2: Enable and view Dependabot alerts
 
-## Welcome
+_Nice work! :tada: You added and viewed a dependency using Dependency graph!_
 
-GitHub helps you secure your supply chain, from understanding the dependencies in your environment, to knowing about vulnerabilities in those dependencies and patching them.
+Given how many dependencies our repository uses, maintaining them needs to become an automated task. Keeping our code secure is a top priority, so the first thing we need to do is set up a way to be notified when a dependency we are using is vulnerable or malware. We can do this by enabling Dependabot alerts.
 
-- **Who this is for**: Developers, DevOps Engineers, Site Reliability Engineers, Security experts
-- **What you'll learn**: How to view repository dependencies, view Dependabot alerts, and enable Dependabot security and version updates
-- **What you'll build**: Repository dependencies, Dependabot alerts, pull requests to fix dependencies and version updates
-- **Prerequisites**: None
-- **Timing**: This course can be completed in under an hour
+**What are Dependabot alerts?**: Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
 
-In this course, you will explore:
+If your code depends on a package that has a security vulnerability, this can cause a range of problems for your project or the people who use it. You should upgrade to a secure version of the package as soon as possible. If your code uses malware, you need to replace the package with a secure alternative.
 
-1. Dependency graph
-2. Dependency alerts
-3. Dependency security updates
-4. Dependency versions updates
+Let's try this out with our newly added `follow-redirects` dependency!
 
-### How to start this course
+### :keyboard: Activity 2.1: View security advisories in the GitHub Advisory Database
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'review-pull-requests',
-  owner: '@me',
-  name: 'skills-review-pull-requests',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+1. Navigate to [GitHub Advisory Database](https://github.com/advisories).
+1. Type or paste `follow-redirects` into the advisory search box.
+1. Click on any of the advisories that were found to see more information.
+1. You'll see the packages, impact, patches, workaround, and references for the advisory.
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?owner=&template_name=secure-repository-supply-chain&template_owner=skills&name=skills-secure-repository-supply-chain&visibility=public)
+Notice the long list of advisories for our dependency! This can look scary but it's actually a good thing. It means that our dependency is actively being maintained and patches are being pushed to remove the vulnerability. If we had Dependabot alerts enabled, we could receive alerts when we need to update a dependency and act promptly to secure them.
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+Let's enable Dependabot alerts on our repository!
+
+### :keyboard: Activity 2.2: Enable Dependabot alerts
+
+1. Navigate to the **Settings** tab.
+1. Display the settings for **Code security and analysis**.
+1. **Enable** Dependabot alerts.
+1. **Wait about 60 seconds for Dependabot to check for alerts.**
+1. Navigate to the **Security** tab.
+1. Under "Vulnerability alerts" in the side bar, select **Dependabot** to view a list of the Dependabot alerts for the default branch.
+
+Dependabot has alerted us to vulnerabilities in the dependencies that we use. We can also use Dependabot to help us address these vulnerabilities by creating pull requests to update the dependency to a safe version.
+
+Let's see how this would work by using Dependabot to create a pull request for one of the alerts!
+
+### :keyboard: Activity 2.3: Create a pull request based on a Dependabot alert
+
+1. In the list of Dependabot alerts, click the "Prototype Pollution in minimist" to display more information.
+1. Click the **Create Dependabot security update** button to create a pull request to update the dependency. This could take up to 2 minutes.
+1. When the pull request is open, the alert page is updated to show a **Review security update** button.
+1. Click the **Review security update** button to display the pull request.
+   - You can view the pull request and **Files changed** tab to review the update.
+1. Navigate back to the **Conversation** tab and merge the pull request.
+
+Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
 
 <footer>
 
